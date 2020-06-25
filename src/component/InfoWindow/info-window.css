@@ -1,0 +1,15 @@
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+.key{
+    display: flex;
+    flex: 1;
+    margin-right: 1vw;
+}
+
+.val{
+    display: flex;
+    flex: 1;
+}

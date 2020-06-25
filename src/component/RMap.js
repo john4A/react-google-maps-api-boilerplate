@@ -14,7 +14,6 @@ const RMap = (props) => {
 
 
     var latLongData = JSON.parse(JSON.stringify(data))
-    console.log(latLongData)
 
     const handleClick=()=>{
         props.history.push('/measurement')
@@ -25,15 +24,16 @@ const RMap = (props) => {
             <GoogleMap
                 center={center}
                 mapContainerStyle={containerStyle}
-                zoom={10}
+                zoom={13}
             >
-                <MarkerWrapper position={center} />
+                <MarkerWrapper position={center} onClick={handleClick}/>
                 {latLongData.default.map(coord => (
                     <MarkerWrapper position={{
                         lat: coord.latitude,
                         lng: coord.longitude
                     }} 
-                    onClick={handleClick}/>
+                    onClick={handleClick}
+                    />
                 ))}
 
 
