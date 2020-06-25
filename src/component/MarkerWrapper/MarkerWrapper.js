@@ -1,6 +1,6 @@
 import React from 'react';
 import { Marker } from '@react-google-maps/api';
-import InfoWindowWrapper from './InfoWindow/InfoWindowWrapper';
+import InfoWindowWrapper from '../InfoWindow/InfoWindowWrapper';
 
 
 
@@ -64,7 +64,7 @@ class MarkerWrapper extends React.Component {
 
 
         var actualAngle = -120
-        let marker = document.querySelector(`[src="${this.url}"]`)
+        let marker = document.querySelector(`[src="${this.urlBottom}"]`)
 
         if (marker)
             marker.style.transform = `rotate(${actualAngle}deg)`
@@ -73,7 +73,7 @@ class MarkerWrapper extends React.Component {
 
     render() {
 
-        const { position, onClick } = this.props
+        const { position, onClick, clusterer } = this.props
 
         return (
             <>
@@ -83,6 +83,7 @@ class MarkerWrapper extends React.Component {
                 onMouseOut={this.handleMouseOut}
                 onClick={onClick}
                 draggable={true}
+                clusterer={clusterer}
             >
                 {this.state.showInfoWindow &&
                     (<InfoWindowWrapper data={{ Latitude: position.lat.toFixed(5), Longitude: position.lng.toFixed(5), MeasurementDate: (new Date()).toString() }} position={position} />)
