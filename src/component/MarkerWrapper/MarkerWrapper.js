@@ -11,7 +11,7 @@ class MarkerWrapper extends React.Component {
         showDirection:false
     }
 
-    urlBottom = "http://localhost:3000/redpin32.png"
+    urlBottom = this.props.imgUrl
     urlBottom=this.urlBottom+"#"+(Math.random()*100000000)
 
     // urlTop = "http://localhost:3000/circle-16.ico"
@@ -20,13 +20,13 @@ class MarkerWrapper extends React.Component {
     iconBottom = {
         url: this.urlBottom,
         scaledSize: new window.google.maps.Size(30, 30),
-        anchor: { x: 10, y: 10 }
+        anchor: { x:15, y: 20 }
     };
 
     // iconTop = {
     //     url: this.urlTop,
-    //     scaledSize: new window.google.maps.Size(15, 15),
-    //     anchor: { x: 10, y: 10 }
+    //     scaledSize: new window.google.maps.Size(20, 20),
+    //     anchor: { x: 15, y: 15 }
     // };
 
     handleMouseOver = () => {
@@ -84,6 +84,7 @@ class MarkerWrapper extends React.Component {
                 onClick={onClick}
                 draggable={true}
                 clusterer={clusterer}
+                zIndex={this.props.zIndex}
             >
                 {this.state.showInfoWindow &&
                     (<InfoWindowWrapper data={{ Latitude: position.lat.toFixed(5), Longitude: position.lng.toFixed(5), MeasurementDate: (new Date()).toString() }} position={position} />)
